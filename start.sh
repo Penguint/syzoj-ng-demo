@@ -85,7 +85,10 @@ cat > config.yaml <<EOF
 server:
   hostname: 0.0.0.0
   port: 2002
-  trustProxy: ["loopback", "linklocal", "uniquelocal"]
+  trustProxy: 
+    - loopback
+    - linklocal
+    - uniquelocal
   clusters: 0
 services:
   database:
@@ -150,6 +153,9 @@ preference:
     discussionRepliesMore: 20
   misc:
     appLogo: ${APP_LOGO:=default}
+    appLogoForTheme:
+      pure: original
+      far: inverted
     googleAnalyticsId: ${GA_ID:=null}
     gravatarCdn: ${GRAVATAR_CDN:=https://gravatar.loli.net}
     redirectLegacyUrls: false
@@ -166,6 +172,7 @@ resourceLimit:
   problemTestdataSize: 134217728
   problemAdditionalFileFiles: 40
   problemAdditionalFileSize: 134217728
+  problemSamplesToRun: 10
   problemTestcases: 20
   problemTimeLimit: 2000
   problemMemoryLimit: 512
@@ -193,7 +200,7 @@ eventReport:
   sentTo: ${TELEGRAM_SEND_TO:=null}
   proxyUrl: ${TELEGRAM_PROXY_URL:=null}
 vendor:
-  ip2region: /opt/ip2region/ip2region.db
+  ip2region: null
 EOF
 
 # Setup admin user
