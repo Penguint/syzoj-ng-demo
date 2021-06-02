@@ -5,8 +5,8 @@ ARG DEBIAN_FRONTEND=noninteractive
 ENV TZ=Asia/Shanghai
 RUN \
     # Configure APT
-    sed -i 's#archive.ubuntu.com#mirrors.tuna.tsinghua.edu.cn#g' /etc/apt/sources.list && \
-    sed -i 's#ports.ubuntu.com#mirrors.tuna.tsinghua.edu.cn#g' /etc/apt/sources.list && \
+    # sed -i 's#archive.ubuntu.com#mirrors.tuna.tsinghua.edu.cn#g' /etc/apt/sources.list && \
+    # sed -i 's#ports.ubuntu.com#mirrors.tuna.tsinghua.edu.cn#g' /etc/apt/sources.list && \
     apt-get update && \
     apt-get install -y curl git vim build-essential software-properties-common && \
     echo "deb [arch=amd64,arm64,ppc64el] http://mirrors.tuna.tsinghua.edu.cn/mariadb/repo/10.5/ubuntu focal main" > /etc/apt/sources.list.d/mariadb.list && \
@@ -34,7 +34,7 @@ RUN \
     cd && \
     git clone https://github.com/syzoj/syzoj-ng && \
     git clone https://github.com/syzoj/syzoj-ng-app && \
-    git clone https://github.com/syzoj/syzoj-ng-demo && \
+    git clone https://github.com/penguint/syzoj-ng-demo && \
     # Install NPM packages
     cd ~/syzoj-ng && yarn && \
     cd ~/syzoj-ng-app && yarn && \
